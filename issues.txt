@@ -1,0 +1,13 @@
+# Issues found with Mindgames
+
+## 2ordie
+
+-   When you have a number with more than two digits it is not possible to
+    remove just the right-most digit. Clicking "R" truncates all but the left-
+    most digit.
+
+## arrowheads
+
+-   Clicking on the green start icon or any other square with a number gives a
+    message "Run-time error '424': Object required".
+
