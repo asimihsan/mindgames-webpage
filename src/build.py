@@ -177,7 +177,7 @@ def compress_output():
             fullpath = os.path.join(root, name)
             if fullpath.endswith('.png'):
                 pngs.append(fullpath)
-            if re.search('.*\.(html|htm|js|css)$', fullpath):
+            if re.search('.*\.(html|htm|js|css|map)$', fullpath):
                 texts.append(fullpath)
     with get_pool() as pool:
         pool.map(compress_png, pngs)
@@ -201,7 +201,7 @@ def generate_manifest():
         result = pool.map(calculate_hash, paths)
     with open(os.path.join(OUTPUT_DIR, 'manifest.txt'), 'w') as f_out:
         for (path, checksum) in zip(paths, result):
-            subpath = path.replace(OUTPUT_DIR, '', 1)
+            subpath = path.replace(OUTPUT_DIR, '', 1).lstrip(r'/')
             f_out.write('"%s" %s\n' % (subpath, checksum))
 
 
