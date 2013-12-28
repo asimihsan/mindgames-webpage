@@ -120,3 +120,16 @@ a:focus {
   margin-top: 2em;
   border-top: 1px solid #13a0aa;
 }
+@media (min-width: 768px) {
+    .main-container {
+        padding-left: 3em;
+    }
+}
+@media (max-width: 992px) {
+    .row {
+        margin-left: 0;
+    }
+}
+.row {
+    margin-right: 5px;
+}
