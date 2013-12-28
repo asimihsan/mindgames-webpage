@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}[Mindgames] {{ game.name }} {% endblock title %}
+
+{% block header %}
+<div class="bs-header" id="content">
+    <div class="bs-example">
+        <ul class="breadcrumb">
+            <li><a href="../index.html">Home</a>
+            </li>
+            <li><a href="../{{ active_section }}/index.html">{{ category_title }}</a>
+            </li>
+            <li class="active">{{ game.name }}</li>
+        </ul>
+    </div>
+    <h1>{{ game.name }}</h1>
+</div>
+{% endblock header %}
+
+{% block content %}
+{{ game.description_html }}
+{% endblock content %}
