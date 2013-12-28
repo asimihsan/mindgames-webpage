@@ -28,7 +28,7 @@
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-body">
-                <p><strong>Last updated</strong>: <time itemprop="lastUpdatedDate" datetime="{{ game.updated }}">{{ game.updated }}</time></p>
+                <p><strong>Last updated</strong>: <time itemprop="dateModified" datetime="{{ game.updated }}">{{ game.updated }}</time></p>
                 {% for link in game.links %}
                 <p><strong>{{ link.label }}</strong>: <a{% if link.label == "Download the game" or link.label == "Download the app" %} itemprop="downloadUrl"{% endif %} href="{{ link.link }}">{{ link.link }}</a></p>
                 {% endfor %}
