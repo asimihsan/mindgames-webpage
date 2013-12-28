@@ -24,6 +24,10 @@ def copy_static_files():
         source = os.path.join(TEMPLATE_DIR, source_dir)
         destination = os.path.join(OUTPUT_DIR, source_dir)
         shutil.copytree(source, destination)
+    for filename in ['favicon.ico']:
+        source = os.path.join(TEMPLATE_DIR, filename)
+        destination = os.path.join(OUTPUT_DIR, filename)
+        shutil.copyfile(source, destination)
 
 
 class TemplateLoader(object):
