@@ -177,7 +177,7 @@ def compress_output():
             fullpath = os.path.join(root, name)
             if fullpath.endswith('.png'):
                 pngs.append(fullpath)
-            if re.search('.*\.(html|htm|js|css|map)$', fullpath):
+            if re.search('.*\.(html|htm|js|css|map|ttf|svg)$', fullpath):
                 texts.append(fullpath)
     with get_pool() as pool:
         pool.map(compress_png, pngs)
