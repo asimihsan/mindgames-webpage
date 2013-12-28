@@ -98,3 +98,14 @@ a:focus {
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px;
 }
+.panel {
+  margin-bottom: 20px;
+  background-color: #13a0aa;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.panel-body {
+    padding: 0.5em 0.5em 0 0.5em;
+}

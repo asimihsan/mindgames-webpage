@@ -21,3 +21,13 @@
     {{ game.summary_html }}
     <p><a href="{{ game.game_id }}.html">Read more</a></p>
 </div>
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <p><strong>Last updated</strong>: {{ game.updated }}</p>
+            {% for link in game.links %}
+            <p><strong>{{ link.label }}</strong>: <a href="{{ link.link }}">{{ link.link }}</a></p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
