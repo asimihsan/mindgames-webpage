@@ -24,11 +24,11 @@ B:
 
 Puzzle:
 
-![](puzzle1.gif)
+![](../img/a2bflip_puzzle1.gif)
 
 Solution:
 
-![](solution1.gif)
+![](../img/a2bflip_solution1.gif)
 
 ### Solving a Puzzle Manually
 

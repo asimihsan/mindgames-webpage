@@ -1,0 +1,23 @@
+<div class="row" id="{{ game.game_id }}">
+    <h2>{{ game.name }}</h2>
+    <div class="modal fade" id="{{ game.game_id }}Modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body screenshot-modal">
+                    <img src="../img/{{ game.screenshots[0] }}" width="600" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <a data-toggle="modal" data-target="#{{ game.game_id }}Modal" class="screenshot-link">
+        <img src="../img/{{ game.screenshots[0] }}" width="100" class="pull-left thumbnail" />
+    </a>
+    {{ game.summary_html }}
+    <p><a href="{{ game.game_id }}.html">Read more</a></p>
+</div>

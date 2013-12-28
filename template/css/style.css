@@ -1,0 +1,100 @@
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,700");
+ @font-face {
+    font-family:'Norwester';
+    src: url('font/norwester.ttf') format('truetype'), url('font/norwester.woff') format('woff'), url('font/norwester.svg') format('svg'), url('font/norwester.eot') format('eot');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family:'Open Sans', sans-serif;
+    line-height: 1.428571429;
+    color: #ffffff;
+    background-color: #108a93;
+    padding-top: 50px;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family:'Norwester', sans-serif;
+    line-height: 1.1;
+    color: inherit;
+}
+h1 {
+    font-size: 400%;
+}
+.mindgames-nav {
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .15);
+    background-color: #ad1d28;
+    border-color: #911821;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .1);
+}
+.mindgames-nav .navbar-collapse {
+    border-color: #911821;
+}
+.mindgames-nav .navbar-brand {
+    color: #fff;
+}
+.mindgames-nav .navbar-nav > li > a {
+    color: #fff;
+}
+.mindgames-nav .navbar-nav > li > a:hover, .mindgames-nav .navbar-nav > li > a:focus {
+    color: #fff;
+    background-color: #d92432;
+}
+.mindgames-nav .navbar-nav > .active > a, .mindgames-nav .navbar-nav > .active > a:hover {
+    color: #fff;
+    background-color: #911821;
+}
+.mindgames-nav .navbar-toggle {
+    border-color: #ad1d28;
+}
+.mindgames-nav .navbar-toggle:hover {
+    background-color: #911821;
+    border-color: #911821;
+}
+.list-group-item {
+    background-color: #13a0aa;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    border: 1px solid #0d747c;
+}
+.thumbnail {
+    margin-right: 2em;
+    background-color: #13a0aa;
+    border: 1px solid #13a0aa;
+    cursor: pointer;
+}
+.screenshot-modal {
+    padding: 0;
+}
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #13a0aa;
+    border-radius: 4px;
+}
+.breadcrumb > li {
+    display: inline-block;
+}
+.breadcrumb > li + li:before {
+    padding: 0 5px;
+    color: #dddddd;
+    content:"/\00a0";
+}
+.breadcrumb > .active {
+    color: #ffffff;
+}
+a {
+    color: #e8d069;
+    text-decoration: none;
+}
+a:hover, a:focus {
+    color: #debb27;
+    text-decoration: underline;
+}
+a:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}

@@ -20,7 +20,7 @@ In the middle there is a single location. As a total, there are 61 places on the
 board. Each player has fourteen pieces that can rest in these 61 locations.
 Initial game position for players in "Standard" layout is shown below:
 
-![](abalone1.gif)
+![](../img/abalone1.gif)
 
 ### Movement of Pieces
 
@@ -31,7 +31,7 @@ when moving in a direction that the line is pointing (i.e., not when moving
 "sideways"). Once you have pushed six of the computer pieces off of the board,
 you win! Typical valid moves on a layout shown below could be following:
 
-![](abalone2.gif)
+![](../img/abalone2.gif)
 
 -   Single Piece move: A single piece can move to any adjacent vacant position.
 -   Moving in line: 31,32 to 33,34 or 40,48,55 to 48,55,61

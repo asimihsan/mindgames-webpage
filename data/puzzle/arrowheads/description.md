@@ -39,11 +39,11 @@ has a unique solution.
 
 Puzzle
 
-![](puzzle1.gif)
+![](../img/arrowheads_puzzle1.gif)
 
 Solution
 
-![](solution1.gif)
+![](../img/arrowheads_solution1.gif)
 
 ### Compiling New Puzzles
 
