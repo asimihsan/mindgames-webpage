@@ -1,12 +1,15 @@
 #!/usr/bin/env python
 
 import codecs
+import contextlib
 import glob
+import hashlib
 import jinja2
 import markdown
 import multiprocessing
 import operator
 import os
+import re
 import shutil
 import subprocess
 import yaml
@@ -155,22 +158,62 @@ def build_game(loader, game, category):
         f_out.write(output_text)
 
 
+@contextlib.contextmanager
+def get_pool():
+    pool = multiprocessing.Pool()
+    try:
+        yield pool
+    finally:
+        pool.close()
+        pool.join()
+        pool.terminate()
+
+
 def compress_output():
     pngs = []
+    texts = []
     for root, dirs, files in os.walk(OUTPUT_DIR):
         for name in files:
             fullpath = os.path.join(root, name)
             if fullpath.endswith('.png'):
                 pngs.append(fullpath)
-    pool = multiprocessing.Pool()
-    pool.map(compress_png, pngs)
-    pool.close()
-    pool.join()
-    pool.terminate()
+            if re.search('.*\.(html|htm|js|css)$', fullpath):
+                texts.append(fullpath)
+    with get_pool() as pool:
+        pool.map(compress_png, pngs)
+        pool.map(gzip_text, texts)
 
 
 def compress_png(fullpath):
     subprocess.check_call(['optipng', '-o7', '-clobber', '-strip', 'all', fullpath])
+
+
+def gzip_text(fullpath):
+    subprocess.check_call(['pigz', '-11', '--keep', '--processes', '1', '--verbose', fullpath])
+
+
+def generate_manifest():
+    paths = []
+    for root, dirs, files in os.walk(OUTPUT_DIR):
+        for name in files:
+            paths.append(os.path.join(root, name))
+    with get_pool() as pool:
+        result = pool.map(calculate_hash, paths)
+    with open(os.path.join(OUTPUT_DIR, 'manifest.txt'), 'w') as f_out:
+        for (path, checksum) in zip(paths, result):
+            subpath = path.replace(OUTPUT_DIR, '', 1)
+            f_out.write('"%s" %s\n' % (subpath, checksum))
+
+
+def calculate_hash(filepath, algorithm=hashlib.md5, length=16 * 1024):
+    m = algorithm()
+    with open(filepath) as f_in:
+        while True:
+            buf = f_in.read(length)
+            if not buf:
+                break
+            m.update(buf)
+    return m.hexdigest()
 
 
 def main():
@@ -182,6 +225,7 @@ def main():
     build_index(loader)
     build_categories(loader)
     compress_output()
+    generate_manifest()
     print('done.')
 
 
