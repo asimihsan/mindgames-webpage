@@ -4,9 +4,11 @@ import codecs
 import glob
 import jinja2
 import markdown
+import multiprocessing
 import operator
 import os
 import shutil
+import subprocess
 import yaml
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
@@ -153,13 +155,34 @@ def build_game(loader, game, category):
         f_out.write(output_text)
 
 
+def compress_output():
+    pngs = []
+    for root, dirs, files in os.walk(OUTPUT_DIR):
+        for name in files:
+            fullpath = os.path.join(root, name)
+            if fullpath.endswith('.png'):
+                pngs.append(fullpath)
+    pool = multiprocessing.Pool()
+    pool.map(compress_png, pngs)
+    pool.close()
+    pool.join()
+    pool.terminate()
+
+
+def compress_png(fullpath):
+    subprocess.check_call(['optipng', '-o7', '-clobber', '-strip', 'all', fullpath])
+
+
 def main():
+    print('starting...')
     loader = TemplateLoader()
     delete_output_directory()
     copy_static_files()
     os.mkdir(os.path.join(OUTPUT_DIR, "img"))
     build_index(loader)
     build_categories(loader)
+    compress_output()
+    print('done.')
 
 
 if __name__ == '__main__':
