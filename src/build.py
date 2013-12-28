@@ -20,7 +20,7 @@ def delete_output_directory():
 
 
 def copy_static_files():
-    for source_dir in ['css']:
+    for source_dir in ['css', 'js']:
         source = os.path.join(TEMPLATE_DIR, source_dir)
         destination = os.path.join(OUTPUT_DIR, source_dir)
         shutil.copytree(source, destination)
