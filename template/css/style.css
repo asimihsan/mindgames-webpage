@@ -7,7 +7,7 @@
 }
 body {
     font-family:'Open Sans', sans-serif;
-    line-height: 1.6;
+    line-height: 1.4;
     color: #ffffff;
     background-color: #108a93;
     padding-top: 50px;
@@ -18,7 +18,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     color: inherit;
 }
 h1 {
-    font-size: 400%;
+    font-size: 300%;
 }
 .mindgames-nav {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, .15);
