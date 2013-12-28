@@ -1,0 +1,1 @@
+Examine changes from pattern 1 to 3 and find pattern 4.
