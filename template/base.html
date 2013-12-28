@@ -72,10 +72,21 @@
     </header>
 
     <div class="container">
+
         <div class="bs-header" id="content">
             {% block header %}{% endblock %}
         </div>
+
+        <div class="row">
         {% block content %}{% endblock %}
+        </div>
+
+        <div class="bs-footer">
+            <div class="col-md-10">
+                <p>Games made by Ihsan Ul Haque. Contact him at <a href="mailto:ihsanulhaque47+mindgames@hotmail.com">ihsanulhaque47@hotmail.com</a>.</p>
+                <p>Web design by <a href="http://www.asimihsan.com">Asim Ihsan</a>.</p>
+            </div>
+        </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

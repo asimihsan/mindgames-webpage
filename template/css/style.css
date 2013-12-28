@@ -114,3 +114,9 @@ a:focus {
     position: relative;
     top: -50px;
 }
+.bs-footer {
+  padding-top: 2em;
+  padding-bottom: 5em;
+  margin-top: 2em;
+  border-top: 1px solid #13a0aa;
+}
