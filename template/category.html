@@ -3,7 +3,7 @@
 {% block title %}[Mindgames] {{ category_title }} {% endblock title %}
 
 {% block header %}
-<div class="bs-header" id="content">
+<div class="bs-header col-md-10" id="content">
     <div class="bs-example">
         <ul class="breadcrumb">
             <li><a href="../index.html">Home</a>
@@ -17,7 +17,7 @@
 
 {% block content %}
 {% include "category_left_sidenav.html" %}
-<div class="col-md-8">
+<div class="col-md-7">
 {% for game in games %}
     {% include "category_right_game_summary.html" %}
 {% endfor %}

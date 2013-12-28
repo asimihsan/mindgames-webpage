@@ -3,7 +3,7 @@
 {% block title %}[Mindgames] {{ game.name }} {% endblock title %}
 
 {% block header %}
-<div class="bs-header" id="content">
+<div class="bs-header col-md-10" id="content">
     <div class="bs-example">
         <ul class="breadcrumb">
             <li><a href="../index.html">Home</a>
@@ -18,5 +18,7 @@
 {% endblock header %}
 
 {% block content %}
+<div class="col-md-10">
 {{ game.description_html }}
+</div>
 {% endblock content %}
