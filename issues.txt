@@ -1,3 +1,10 @@
+# Favourites
+
+## liteit
+
+-   This is fun; good combination of a crossword and the N-Queens problem.
+-   Mobile friendly?
+
 # Issues found with Mindgames
 
 ## 2ordie
@@ -10,4 +17,3 @@
 
 -   Clicking on the green start icon or any other square with a number gives a
     message "Run-time error '424': Object required".
-
