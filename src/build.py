@@ -160,7 +160,7 @@ def build_game(loader, game, category):
 
 @contextlib.contextmanager
 def get_pool():
-    pool = multiprocessing.Pool()
+    pool = multiprocessing.Pool(max(multiprocessing.cpu_count() - 2, 1))
     try:
         yield pool
     finally:
