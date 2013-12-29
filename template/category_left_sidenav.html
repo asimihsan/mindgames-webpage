@@ -1,9 +1,7 @@
-<div class="col-md-3">
-    <div class="hidden-print" role="complementary">
-        <ul class="list-group">
-            {% for game in games %}
-            <li class="list-group-item"><a href="#{{ game.game_id }}">{{ game.name }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
+<div class="hidden-print" role="complementary">
+    <ul class="list-group">
+        {% for game in games %}
+        <li class="list-group-item"><a href="#{{ game.game_id }}">{{ game.name }}</a></li>
+        {% endfor %}
+    </ul>
 </div>
