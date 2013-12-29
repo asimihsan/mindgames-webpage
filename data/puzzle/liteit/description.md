@@ -28,7 +28,7 @@ There are two ways for defining a new puzzle.
 
 **Enter the puzzle details in a text file using a text editor**:
 
-The puzzle definition format for the puzzle shown above is as follows: (`--` is
+The puzzle definition format for the puzzle shown above is as follows (`:--` is
 a comment, not part of the definition):
 
     #1:-- Puzzle Number
