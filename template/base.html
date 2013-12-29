@@ -68,21 +68,19 @@
         </div>
     </header>
 
-    <div class="container-fluid main-container">
+    <div class="container-fluid main-container col-md-10">
 
         <div class="bs-header" id="content">
             {% block header %}{% endblock %}
         </div>
-
-        <div class="row">
-        {% block content %}{% endblock %}
+        
+        <div class="bs-content clearfix">
+            {% block content %}{% endblock %}
         </div>
-
+        
         <div class="bs-footer">
-            <div class="col-md-10">
-                <p>Games made by <a href="mailto:ihsanulhaque47+mindgames@hotmail.com" rel="author">Ihsan Ul Haque</a>.</p>
-                <p>Web design by <a href="http://www.asimihsan.com" rel="author">Asim Ihsan</a>.</p>
-            </div>
+            <p>Games made by <a href="mailto:ihsanulhaque47+mindgames@hotmail.com" rel="author">Ihsan Ul Haque</a>.</p>
+            <p>Web design by <a href="http://www.asimihsan.com" rel="author">Asim Ihsan</a>.</p>
         </div>
     </div>
 

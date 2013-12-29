@@ -3,22 +3,17 @@
 {% block title %}[Mindgames] {{ game.name }} {% endblock title %}
 
 {% block header %}
-<div class="bs-header col-md-10" id="content">
-    <div class="bs-example">
-        <ul class="breadcrumb">
-            <li><a href="../index.html">Home</a>
-            </li>
-            <li><a href="../{{ active_section }}/index.html">{{ category_title }}</a>
-            </li>
-            <li class="active">{{ game.name }}</li>
-        </ul>
-    </div>
-    <h1>{{ game.name }}</h1>
-</div>
+<ul class="breadcrumb">
+    <li><a href="../index.html">Home</a>
+    </li>
+    <li><a href="../{{ active_section }}/index.html">{{ category_title }}</a>
+    </li>
+    <li class="active">{{ game.name }}</li>
+</ul>
+<h1>{{ game.name }}</h1>
 {% endblock header %}
 
 {% block content %}
-<div class="col-md-10">
 <p>(read and leave comments at the <a href="#disqus_thread">bottom of the page</a>)</p>
 
 {{ game.description_html }}
@@ -39,5 +34,4 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
 {% endblock content %}

@@ -157,3 +157,6 @@ a:focus {
 .row {
     margin-right: 5px;
 }
+.category-left-sidenav {
+    padding-left: 0;
+}
