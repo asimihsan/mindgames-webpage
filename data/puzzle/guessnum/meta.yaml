@@ -1,0 +1,12 @@
+name:           GuessNum
+version:        1.0
+updated:        22-09-2012
+screenshots:
+-   guessnum_screenshot.png
+links:
+-   label:  Download the game
+    link:   http://www.ihsan.biz/common/exe/guessnum-1.0-setup.exe
+-   label:  Download 60 GuessNum pictures
+    link:   http://www.ihsan.biz/common/exe/guessnumpictures.zip
+-   label:  Download 20,000 ready-made puzzles
+    link:   http://www.ihsan.biz/common/exe/guessnum20k.zip
