@@ -3,6 +3,7 @@
 import boto
 import contextlib
 import cStringIO as StringIO
+import datetime
 import os
 import pprint
 import re
@@ -97,6 +98,7 @@ def upload_to_s3(s3_bucket='mindgames.asimihsan.com'):
                     logger.info('local_filepath %s is HTML, so set Content-Type header w/ utf-8' %
                                 local_filepath)
                     key.set_metadata("Content-Type", "text/html; charset=utf-8")
+                maybe_set_expires(key, local_filepath)
                 key.set_contents_from_filename(local_fullpath)
                 key.make_public()
                 logger.info('uploaded local_filepath: %s' % local_filepath)
@@ -110,6 +112,16 @@ def upload_to_s3(s3_bucket='mindgames.asimihsan.com'):
     logger.info('uploading manifest file...')
     remote_manifest_key.set_contents_from_filename(os.path.join(OUTPUT_DIR, 'manifest.txt'))
     remote_manifest_key.make_public()
+
+
+def maybe_set_expires(key, local_filepath):
+    if not re.search(r'^.*\.(png|gif|jpg|eot|svg|ttf|woff)$', local_filepath):
+        logger.info('not setting expires for local_filepath: %s' % local_filepath)
+        return
+    expires = datetime.datetime.utcnow() + datetime.timedelta(days=7)
+    expires = expires.strftime("%a, %d %b %Y %H:%M:%S GMT")
+    logger.info("Setting Expires to %s for local_filepath %s" % (expires, local_filepath))
+    key.set_metadata("Expires", expires)
 
 
 def main():
