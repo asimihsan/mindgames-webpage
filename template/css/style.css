@@ -160,3 +160,8 @@ a:focus {
 .category-left-sidenav {
     padding-left: 0;
 }
+pre {
+    color: #ffffff;
+    background-color: #0d747c;
+    border: 1px solid #0d747c;
+}
