@@ -118,7 +118,7 @@ def maybe_set_expires(key, local_filepath):
     if not re.search(r'^.*\.(png|gif|jpg|eot|svg|ttf|woff)$', local_filepath):
         logger.info('not setting expires for local_filepath: %s' % local_filepath)
         return
-    expires = datetime.datetime.utcnow() + datetime.timedelta(days=7)
+    expires = datetime.datetime.utcnow() + datetime.timedelta(days=30)
     expires = expires.strftime("%a, %d %b %Y %H:%M:%S GMT")
     logger.info("Setting Expires to %s for local_filepath %s" % (expires, local_filepath))
     key.set_metadata("Expires", expires)
