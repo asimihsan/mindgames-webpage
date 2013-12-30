@@ -5,6 +5,11 @@
 -   This is fun; good combination of a crossword and the N-Queens problem.
 -   Mobile friendly?
 
+## mirrormaze
+
+-   Seems like an easier version of masyu
+-   Mobile friendly?
+
 # Issues found with Mindgames
 
 ## 2ordie
