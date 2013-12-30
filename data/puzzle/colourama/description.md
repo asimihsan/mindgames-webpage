@@ -110,6 +110,6 @@ is not for sale or for commercial use.
 
 ### About ColouRama
 
-This program is free to use and distribute for personnel use only, cannot be
-used for commercial purposes. Icons used in this program may also have copyright
+This program is free to use and distribute for personal use only, cannot be used
+for commercial purposes. Icons used in this program may also have copyright
 conditions.

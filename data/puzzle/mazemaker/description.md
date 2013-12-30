@@ -37,5 +37,5 @@ you can also play against the computer to reach the exit location faster.
 
 ### About MazeMaker
 
-This program is free for personnel use only. Cannot use or distribute game
+This program is free for personal use only. Cannot use or distribute game
 concept or this program for commercial purposes.

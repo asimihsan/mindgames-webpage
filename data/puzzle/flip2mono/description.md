@@ -57,5 +57,5 @@ puzzle is however very hard, not every body's cup of tea.
 
 ### About Flip2Mono
 
-This program is free for personnel use only. Cannot use or distribute this
+This program is free for personal use only. Cannot use or distribute this
 program or game concept for commercial purposes.
