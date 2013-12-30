@@ -1,0 +1,10 @@
+name:           MirrorMaze
+version:        1.0
+updated:        10-11-2007
+screenshots:
+-   mirrormaze_screenshot.png
+links:
+-   label:  Download the game
+    link:   http://www.ihsan.biz/common/exe/mirrormaze-1.0-setup.exe
+-   label:  Download 20,000 extra puzzles
+    link:   http://www.ihsan.biz/common/exe/mirrormaze20k.zip
