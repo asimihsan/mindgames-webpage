@@ -10,6 +10,11 @@
 -   Seems like an easier version of masyu
 -   Mobile friendly?
 
+## moneydrain
+
+-   interesting, different, tetris like
+-   maybe more mobile friendly than others
+
 # Issues found with Mindgames
 
 ## 2ordie
