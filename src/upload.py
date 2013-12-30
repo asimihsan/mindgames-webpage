@@ -66,26 +66,17 @@ def upload_to_s3(s3_bucket='mindgames.asimihsan.com'):
                     logger.info('skipping GZIP\'d local_filepath %s' % local_filepath)
                     continue
                 key = bucket.get_key(local_filepath)
-                gzipped_filepath = '%s.gz' % local_filepath
-                is_gzipped = gzipped_filepath in local_manifest
-                if is_gzipped:
-                    logger.info('local_filepath %s has gzipped version' % local_filepath)
-                    gzipped_checksum = local_manifest[gzipped_filepath]
-                    if (key is not None and
-                            remote_manifest.get(gzipped_filepath, None) == gzipped_checksum):
-                        logger.info('local_filepath %s is gzip\'d, exists, and identical to remote,'
-                                    ' so skip' % local_filepath)
-                else:
-                    logger.info('local_filepath %s does not have gzipped version' % local_filepath)
-                    if (key is not None and
-                            remote_manifest.get(local_filepath, None) == local_checksum):
-                        logger.info('local_filepath %s is not gzip\'d, exists, and identical to '
-                                    'remote, so skip' % local_filepath)
-                        continue
+                if (key is not None and
+                        remote_manifest.get(local_filepath, None) == local_checksum):
+                    logger.info('local_filepath %s exists, and identical to '
+                                'remote, so skip' % local_filepath)
+                    continue
                 modified_files.append(local_filepath)
                 if key is None:
                     logger.info('local_filepath %s does not exist' % local_filepath)
                     key = bucket.new_key(local_filepath)
+                gzipped_filepath = '%s.gz' % local_filepath
+                is_gzipped = gzipped_filepath in local_manifest
                 if is_gzipped:
                     local_fullpath = os.path.join(OUTPUT_DIR, gzipped_filepath)
                 else:
@@ -103,6 +94,7 @@ def upload_to_s3(s3_bucket='mindgames.asimihsan.com'):
                 key.make_public()
                 logger.info('uploaded local_filepath: %s' % local_filepath)
 
+    modified_files.sort()
     if len(modified_files) > 0:
         logger.info("invalidate the following on cloudfront:\n%s" % pprint.pformat(modified_files))
         conn_cloudfront.create_invalidation_request(cloudfront_distribution.id, modified_files)
