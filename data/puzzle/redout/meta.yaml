@@ -1,0 +1,10 @@
+name:           RedOut
+version:        1.0
+updated:        20-06-2008
+screenshots:
+-   redout_screenshot.png
+links:
+-   label:  Download the game
+    link:   http://www.ihsan.biz/common/exe/redout-1.0-setup.exe
+-   label:  Download 20,000 extra puzzles
+    link:   http://www.ihsan.biz/common/exe/redout20k.zip
