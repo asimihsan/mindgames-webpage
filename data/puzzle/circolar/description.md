@@ -25,5 +25,5 @@ different colours.
 
 ### About Circolar
 
-This program is free for personnel use only. Cannot use or distribute this
+This program is free for personal use only. Cannot use or distribute this
 program or game concept for commercial purposes.
