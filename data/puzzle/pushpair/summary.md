@@ -1,0 +1,1 @@
+Push all the dark circles into the right hand side column.
