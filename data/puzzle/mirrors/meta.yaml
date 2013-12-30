@@ -1,0 +1,10 @@
+name:           Mirrors
+version:        1.0
+updated:        10-11-2007
+screenshots:
+-   mirrors_screenshot.png
+links:
+-   label:  Download the game
+    link:   http://www.ihsan.biz/common/exe/mirrors-1.0-setup.exe
+-   label:  Download 20,000 extra puzzles
+    link:   http://www.ihsan.biz/common/exe/mirrors20k.zip
