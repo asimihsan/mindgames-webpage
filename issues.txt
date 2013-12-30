@@ -15,6 +15,11 @@
 -   interesting, different, tetris like
 -   maybe more mobile friendly than others
 
+## mutorere
+
+-   great, simple game.
+-   small dimensions! ideal for mobile.
+
 # Issues found with Mindgames
 
 ## 2ordie
