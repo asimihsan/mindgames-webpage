@@ -17,3 +17,7 @@
 
 -   Clicking on the green start icon or any other square with a number gives a
     message "Run-time error '424': Object required".
+
+## masyu
+
+-   Right clicking doesn't delete existing bridges
