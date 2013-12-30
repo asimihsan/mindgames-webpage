@@ -1,0 +1,10 @@
+name:           Masyu
+version:        1.0
+updated:        14-05-2007
+screenshots:
+-   masyu_screenshot.png
+links:
+-   label:  Download the game
+    link:   http://www.ihsan.biz/common/exe/masyu-1.0-setup.exe
+-   label:  Download 20,000 extra puzzles
+    link:   http://www.ihsan.biz/common/exe/masyu20k.zip
