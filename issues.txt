@@ -21,3 +21,9 @@
 ## masyu
 
 -   Right clicking doesn't delete existing bridges
+
+## maze
+
+-   The maze shortcut installed in the start menu doesn't work. It points at
+"C:\Program Files\maze\maze.exe" but it needs to point at
+"C:\Program Files\maze\maz2.exe".
