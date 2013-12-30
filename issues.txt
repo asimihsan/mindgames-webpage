@@ -24,6 +24,10 @@
 
 -   great! very mobile friendly
 
+## shoppingaround
+
+-   interesting.
+
 # Issues found with Mindgames
 
 ## 2ordie
