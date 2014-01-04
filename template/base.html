@@ -16,6 +16,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="msapplication-tooltip" content="An eclectic collection of games for the mind!">
+
+    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+    <meta name="DC.Title" content="{% block title %}[Mindgames]{% endblock %}">
+    <meta name="DC.Creator" content="Ihsan Ul Haque">
+    <meta name="DC.Subject" content="Computer games">
+    <meta name="DC.Contributor" content="Asim Ihsan">
+    <meta name="DC.Date" content="{{ date }}">
+    <meta name="DC.Type" content="Software">
+    <meta name="DC.Language" content="en">
+    <link rel="DC.Rights" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+
     <!-- Bootstrap -->
     <link href="{% if active_section != 'index' %}../{% endif %}css/bootstrap.min.css" rel="stylesheet">
     <link href="{% if active_section != 'index' %}../{% endif %}css/style.css" rel="stylesheet">
@@ -27,7 +38,7 @@
       <script src="{% if active_section != 'index' %}../{% endif %}js/respond.min.js"></script>
     <![endif]-->
 
-    <title>{% block title %}[Mindgames]{% endblock %}</title>
+    <title>{{ self.title() }}</title>
 </head>
 
 <body>
