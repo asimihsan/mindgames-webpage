@@ -2,6 +2,7 @@
 
 import codecs
 import contextlib
+import datetime
 import glob
 import hashlib
 import jinja2
@@ -46,7 +47,8 @@ class TemplateLoader(object):
 
 def build_index(loader):
     template = loader.get_template('index.html')
-    output_text = template.render(active_section="index")
+    output_text = template.render(date=datetime.date.today().isoformat(),
+                                  active_section="index")
     with open(os.path.join(OUTPUT_DIR, 'index.html'), 'w') as f_out:
         f_out.write(output_text)
 
@@ -137,7 +139,8 @@ def build_category(loader, path):
             assert not os.path.isfile(destination), 'destination %s already exists.' % destination
             shutil.copyfile(image, destination)
     template = loader.get_template('category.html')
-    output_text = template.render(active_section=category.category_name,
+    output_text = template.render(date=datetime.date.today().isoformat(),
+                                  active_section=category.category_name,
                                   category_title=category.category_title,
                                   games=category.games)
     os.mkdir(os.path.join(OUTPUT_DIR, category.category_name))
@@ -149,7 +152,8 @@ def build_category(loader, path):
 
 def build_game(loader, game, category):
     template = loader.get_template('game_detail.html')
-    output_text = template.render(active_section=category.category_name,
+    output_text = template.render(date=datetime.date.today().isoformat(),
+                                  active_section=category.category_name,
                                   category_title=category.category_title,
                                   game=game)
     with open(os.path.join(OUTPUT_DIR,
