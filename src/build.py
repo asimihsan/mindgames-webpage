@@ -8,10 +8,13 @@ import hashlib
 import jinja2
 import markdown
 import multiprocessing
+import ntpath
 import operator
 import os
+import posixpath
 import re
 import shutil
+import stat
 import subprocess
 import yaml
 
@@ -21,8 +24,19 @@ OUTPUT_DIR = os.path.join(ROOT_DIR, 'output')
 TEMPLATE_DIR = os.path.join(ROOT_DIR, 'template')
 
 
+def remove_readonly(fn, path, excinfo):
+    if not os.path.isdir(path):
+        return
+    if fn is os.rmdir:
+        os.chmod(path, stat.S_IWRITE)
+        os.rmdir(path)
+    elif fn is os.remove:
+        os.chmod(path, stat.S_IWRITE)
+        os.remove(path)
+
+
 def delete_output_directory():
-    shutil.rmtree(OUTPUT_DIR)
+    shutil.rmtree(OUTPUT_DIR, onerror=remove_readonly)
 
 
 def copy_static_files():
@@ -193,7 +207,7 @@ def compress_png(fullpath):
 
 
 def gzip_text(fullpath):
-    subprocess.check_call(['pigz', '-11', '--keep', '--processes', '1', '--verbose', fullpath])
+    subprocess.check_call(['gzip', '--best', '--keep', '--verbose', fullpath])
 
 
 def generate_manifest():
@@ -205,7 +219,8 @@ def generate_manifest():
         result = pool.map(calculate_hash, paths)
     with open(os.path.join(OUTPUT_DIR, 'manifest.txt'), 'w') as f_out:
         for (path, checksum) in zip(paths, result):
-            subpath = path.replace(OUTPUT_DIR, '', 1).lstrip(r'/')
+            subpath = path.replace(OUTPUT_DIR, '', 1).lstrip(os.path.sep)
+            subpath = subpath.replace(ntpath.sep, posixpath.sep)
             f_out.write('"%s" %s\n' % (subpath, checksum))
 
 

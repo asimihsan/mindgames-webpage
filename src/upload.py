@@ -30,7 +30,7 @@ def get_manifest_from_file(f_in):
     return_value = {}
     for line in f_in:
         match = re.search('^\"(?P<path>[^"]+)\" (?P<checksum>.*)$', line)
-        assert match, 'get_local_manife`st() line %s doesn\'t match pattern' % line
+        assert match, 'get_local_manifest() line %s doesn\'t match pattern' % line
         return_value[match.groupdict()['path']] = match.groupdict()['checksum']
     return return_value
 
@@ -59,6 +59,7 @@ def upload_to_s3(s3_bucket='mindgames.asimihsan.com'):
                 logger.info('remote manifest exists')
                 contents = remote_manifest_key.get_contents_as_string()
                 remote_manifest = get_manifest_from_file(StringIO.StringIO(contents))
+
 
             for (local_filepath, local_checksum) in local_manifest.items():
                 if (local_filepath.endswith('.gz') and
