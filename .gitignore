@@ -2,3 +2,5 @@ data/*/*/*.html
 output
 temp
 *.sublime*
+*.pyc
+Icon*
