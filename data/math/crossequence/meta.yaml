@@ -1,0 +1,10 @@
+name:           CrosSequence
+version:        1.0
+updated:        4-4-2014
+screenshots:
+-   crossequence_screenshot.gif
+links:
+-   label:  Download the game
+    link:   http://www.ihsan.biz/common/exe/crossequence-1.0-setup.exe
+-   label:  Download extra puzzles
+    link:   http://www.ihsan.biz/common/exe/crossequence.zip
