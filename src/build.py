@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
+from bs4 import BeautifulSoup
 import codecs
 import contextlib
 import datetime
 import glob
 import hashlib
+import html5lib
 import jinja2
 import markdown
 import multiprocessing
@@ -152,7 +154,17 @@ class Game(object):
         if filepath.endswith('.md'):
             setattr(self, attribute, markdown.markdown(text))
         else:
-            setattr(self, attribute, text)
+            # Pre-existing HTML is often malformed and full HTML documents. We need to tolerantly
+            # parse it (using html5lib) and then only return the contents (the string markup
+            # contents of the body tag). We also fix up image sources.
+            doc = BeautifulSoup(text, "html5lib")
+            for img in doc.find_all('img'):
+                if not img.attrs['src'].startswith('../img/'):
+                    img.attrs['src'] = '../img/%s' % img.attrs['src'] 
+            body = doc.find("body").prettify()
+            body = re.sub("^<body>", "", body)
+            body = re.sub("</body>$", "", body)
+            setattr(self, attribute, body)
 
 
 def build_categories(loader):
