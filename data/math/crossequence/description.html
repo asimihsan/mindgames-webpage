@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="generator" content="Adobe GoLive" />
+<title>
+Welcome to CrosSequence Puzzle
+</title>
+<link href="help-style.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+<a name="top">
+</a>
+<h1>
+Welcome to CrosSequence Puzzle
+</h1>
+<a href="#introduction">Introduction</a><br>
+<a href="#layout">Puzzle Layout</a><br>
+<a href="#example">Puzzle Example</a><br>
+<a href="#features">Program Features</a><br>
+<a href="#solving">Solving a Puzzle Manually</a><br>
+<a href="#solvingauto">Auto Solving a Puzzle</a><br>
+<a href="#printing">Printing</a><br>
+<a href="#aboutcrossequence">About CrosSequence Program</a><br>
+
+<a name="Introduction">
+</a><h3>Introduction</h3>
+<p>
+Fill a grid such that cross cells at any location are in sequence.  Cross cells are left and right, and, top and bottom of a cell.  Sequence is a mathematical sequence like 1,2,3 or 4,6,8 or 1,5,9 etc.  There are no duplicate numbers in any row or any column of the grid.  Some cells are given and some may be blacked out (not part of a sequence).  Puzzle size is 5x5 to 9x9.  Each puzzle has a unique solution that can be reached by logic alone without any guesswork.
+</p>
+<p><a href="#top">
+TOP
+</a></p>
+
+<a name="layout">
+</a><h3>Puzzle</h3>
+<img src="crossequence.gif" width="360" height="400" alt="">
+</a><h3>Solution</h3>
+<img src="crossequence1.gif" width="360" height="400" alt="">
+</p>
+<p><a href="#top">
+TOP
+</a></p>
+
+<a name="example">
+</a><h3>Puzzle Example</h3>
+See the puzzle and its solution below:
+<pre>
+Puzzle
++---+---+---+---+---+---+
+|   |   |   |   | X | X |  
++---+---+---+---+---+---+
+|   |   | 5 | X | 4 | X |  
++---+---+---+---+---+---+
+|   |   |   |   |   |   |  
++---+---+---+---+---+---+
+|   | X | 1 | 2 |   |   |  
++---+---+---+---+---+---+
+| X | 6 | X |   |   | 5 |  
++---+---+---+---+---+---+
+|   | 5 |   | X |   | 3 |  
++---+---+---+---+---+---+
+X in cell indicates that a cell is not part of any sequence.
+
+Solution 
++---+---+---+---+---+---+
+| 2 | 3 | 4 | 5 | X | X |  
++---+---+---+---+---+---+
+| 3 | 1 | 5 | X | 4 | X |  
++---+---+---+---+---+---+
+| 1 | 2 | 3 | 4 | 5 | 6 |  
++---+---+---+---+---+---+
+| 5 | X | 1 | 2 | 3 | 4 |  
++---+---+---+---+---+---+
+| X | 6 | X | 3 | 1 | 5 |  
++---+---+---+---+---+---+
+| 4 | 5 | 6 | X | 2 | 3 |  
++---+---+---+---+---+---+
+
+In this puzzle:
++---+---+---+
+|   | 4 |   |
++---+---+---+
+| 1 | 2 | 3 |  Values in the grid are correct since:
++---+---+---+  1,2,3 (horizontal) and 2,3,4 (vertical) are in sequence
+|   | 3 |   |
++---+---+---+
+And:
++---+---+---+
+|   | X |   |
++---+---+---+
+| 3 | 4 | 5 |  Values in the grid are correct since: 
++---+---+---+  3,4,5 (horizontal) is in sequence and vertical sequence is not applicable because of a blocked cell X
+|   | 2 |   |
++---+---+---+
+</pre>
+</p>
+<p><a href="#top">
+TOP
+</a></p>
+
+<a name="features">
+</a><h3>Program Features</h3>
+Main features of this program are:
+<ol type="1">
+<li>Create new puzzles, grid size 5x5 to 9x9
+<li>Create and save puzzles
+<li>Autosolve a puzzle with a log of solution steps
+<li>Save solution log
+<li>Print single or multiple puzzles
+<li>Export puzzles in text format
+<li>Copy a puzzle to Clipboard   
+<li>Set display colour schemes
+<li>Use one of <a href="common/exe/crossequence20k.zip" >20,000 ready made puzzles</a> 2.17Mb</li>
+</ul></ol></p>
+<p><a href="#top">TOP</a></p>
+
+<a name="solving"></a>
+<h3>Solving a Puzzle Manually</h3>
+Normally you would print this puzzle and solve on paper.  Puzzle can also be solved on screen. 
+<ol type="1">
+<li>Navigate through the grid using arrow keys
+<li>Enter numbers using number keys
+<li>Press Escape to clear a cell
+<li>Rightclick on a cell to check validity of two sequences around a number.  A green line will indicate a correct while red line will signify an incorrect sequence.
+<li>Click verify command button to check if you have solved the puzzle
+</ol>
+<p><a href="#top">
+TOP
+</a></p>
+
+<a name="solvingauto"></a>
+<h3>Auto Solving a Puzzle</h3>
+Any puzzle created by this program can be solved by the computer.  Three options are provided:
+<ol type="1">
+<li>Solve Direct : Puzzle is solved in one shot with solution displayed at the end
+<li>Solve with a log : Puzzle is solved in one shot but a solution log is maintained giving logic behind the solution.  Use Save Solution Log menu to save and print the log in order examine the solution steps at leisure.
+<li>Solve with a log and pause at each solution step:  Program will display logic behind a solution step and pause.  Click on the step message window or press space bar  to proceed to next step.  Rightclick on the step message window to cancel pause.
+<li>Each puzzle has a unique solution which can be reached by logic alone without any guesswork.  However, the solution steps taken by a computer solution may not be optimum.  Generally a good human solver will get a solution in less steps than the computer.
+</ol>
+<p><a href="#top">
+TOP
+</a></p>
+
+
+<a name="printing"></a>
+<h3>Printing</h3>
+<p>
+The current puzzle and its solution will be printed on an A4 sheet that can be folded in two halves to separate puzzle from its solution.  You can also print multiple puzzles from an existing puzzle file.
+</p>
+</ul>
+<p><a href="#top">
+TOP
+</a></p></ul>
+
+<p><a name="aboutcrossequence"></a>
+<h3>About CrosSequence Program</h3>
+<p>
+This program is free to use and distribute but this program or game concept cannot be used for commercial purposes.<br>
+<a href="mailto:ihsan@ihsan.biz">ihsan@ihsan.biz</a>
+</p></ul>
+<p><a href="#top">
+TOP
+</a></p>
+
+</body>
+</html>
