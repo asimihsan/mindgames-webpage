@@ -92,14 +92,17 @@ class Category(object):
 
 
 class Game(object):
-    required_files = ['description.md', 'meta.yaml', 'summary.md']
+    required_files = [['description.html', 'description.htm', 'description.md'],
+                      ['meta.yaml'],
+                      ['summary.html', 'summary.htm', 'summary.md']]
 
     def __init__(self, path):
         self.path = path
         self.game_id = os.path.basename(path)
-        for filename in self.required_files:
-            fullpath = os.path.join(self.path, filename)
-            assert os.path.isfile(fullpath), 'could not find file %s' % fullpath
+        for filenames in self.required_files:
+            fullpaths = [os.path.join(self.path, filename) for filename in filenames]
+            assert any(os.path.isfile(fullpath) for fullpath in fullpaths), \
+                'Could not find any file %s. One is required.' % fullpaths
         self.load_meta_yaml()
         self.load_summary()
         self.load_description()
@@ -128,11 +131,11 @@ class Game(object):
         assert 'links' in self.meta_yaml, '%s: meta.yaml missing "links" key' % self.path
 
     def load_summary(self):
-        self._load_text(['summary.html', 'summary.md'],
+        self._load_text(['summary.html', 'summary.htm', 'summary.md'],
                         'summary_html')
 
     def load_description(self):
-        self._load_text(['description.html', 'description.md'],
+        self._load_text(['description.html', 'description.htm', 'description.md'],
                         'description_html')
 
     def _load_text(self, filepaths, attribute):
