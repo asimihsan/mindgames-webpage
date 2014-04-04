@@ -22,6 +22,7 @@ ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 DATA_DIR = os.path.join(ROOT_DIR, 'data')
 OUTPUT_DIR = os.path.join(ROOT_DIR, 'output')
 TEMPLATE_DIR = os.path.join(ROOT_DIR, 'template')
+CACHE_DIR = os.path.join(ROOT_DIR, 'cache')
 
 
 def remove_readonly(fn, path, excinfo):
@@ -37,6 +38,7 @@ def remove_readonly(fn, path, excinfo):
 
 def delete_output_directory():
     shutil.rmtree(OUTPUT_DIR, onerror=remove_readonly)
+    assert not os.path.isdir(OUTPUT_DIR)
 
 
 def copy_static_files():
@@ -104,6 +106,9 @@ class Game(object):
         self.images = [filepath for filepath in glob.glob(os.path.join(self.path, '*'))
                        if any(filepath.endswith(ext) for ext in ['.jpg', '.gif', '.png'])]
 
+    def __str__(self):
+        return "{game_id=%s}" % (self.game_id, )
+
     def load_meta_yaml(self):
         with open(os.path.join(self.path, 'meta.yaml')) as f_in:
             self.meta_yaml = yaml.load(f_in)
@@ -123,18 +128,28 @@ class Game(object):
         assert 'links' in self.meta_yaml, '%s: meta.yaml missing "links" key' % self.path
 
     def load_summary(self):
-        with codecs.open(os.path.join(self.path, 'summary.md'),
-                         mode='r',
-                         encoding='utf-8') as f_in:
-            text = f_in.read()
-        self.summary_html = markdown.markdown(text)
+        self._load_text(['summary.html', 'summary.md'],
+                        'summary_html')
 
     def load_description(self):
-        with codecs.open(os.path.join(self.path, 'description.md'),
-                         mode='r',
-                         encoding='utf-8') as f_in:
-            text = f_in.read()
-        self.description_html = markdown.markdown(text)
+        self._load_text(['description.html', 'description.md'],
+                        'description_html')
+
+    def _load_text(self, filepaths, attribute):
+        assert any(os.path.isfile(os.path.join(self.path, filepath))
+                   for filepath in filepaths)
+        for filepath in filepaths:
+            fullpath = os.path.join(self.path, filepath)
+            if os.path.isfile(fullpath):
+                with codecs.open(fullpath,
+                                 mode='r',
+                                 encoding='utf-8') as f_in:
+                    text = f_in.read()
+                    break
+        if filepath.endswith('.md'):
+            setattr(self, attribute, markdown.markdown(text))
+        else:
+            setattr(self, attribute, text)
 
 
 def build_categories(loader):
@@ -148,7 +163,9 @@ def build_categories(loader):
 def build_category(loader, path):
     category = Category(path)
     for game in category.games:
+        print("build_category working on game: %s" % game)
         for image in game.images:
+            print("build_category working on image: %s" % image)
             destination = os.path.join(OUTPUT_DIR, "img", os.path.basename(image))
             assert not os.path.isfile(destination), 'destination %s already exists.' % destination
             shutil.copyfile(image, destination)
@@ -170,9 +187,12 @@ def build_game(loader, game, category):
                                   active_section=category.category_name,
                                   category_title=category.category_title,
                                   game=game)
-    with open(os.path.join(OUTPUT_DIR,
-                           category.category_name,
-                           '%s.html' % game.game_id), 'w') as f_out:
+    fullpath = os.path.join(OUTPUT_DIR,
+                            category.category_name,
+                            '%s.html' % game.game_id)
+    with codecs.open(fullpath,
+                     mode='w',
+                     encoding='utf-8') as f_out:
         f_out.write(output_text)
 
 
@@ -203,7 +223,13 @@ def compress_output():
 
 
 def compress_png(fullpath):
-    subprocess.check_call(['optipng', '-o7', '-clobber', '-strip', 'all', fullpath])
+    extension = os.path.splitext(fullpath)[1]
+    cache_filename = "%s%s" % (calculate_hash(fullpath), extension)
+    cache_fullpath = os.path.join(CACHE_DIR, cache_filename)
+    if not os.path.isfile(cache_fullpath):
+        shutil.copyfile(fullpath, cache_fullpath)
+        subprocess.check_call(['optipng', '-o7', '-clobber', '-strip', 'all', cache_fullpath])
+    shutil.copyfile(cache_fullpath, fullpath)
 
 
 def gzip_text(fullpath):
@@ -239,6 +265,8 @@ def main():
     print('starting...')
     loader = TemplateLoader()
     delete_output_directory()
+    if not os.path.isdir(CACHE_DIR):
+        os.makedirs(CACHE_DIR)
     copy_static_files()
     os.mkdir(os.path.join(OUTPUT_DIR, "img"))
     build_index(loader)
